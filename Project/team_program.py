@@ -1,8 +1,3 @@
-# ============================
-# TEAM SORTING PROGRAM
-# ============================
-
-# Input Handler  (Suphakrit)
 
 def get_input():
     raw = input("Enter numbers separated by spaces: ")
@@ -24,13 +19,15 @@ def bubble_sort(arr):
 # Quick Sort (Phisanuwat)
 
 def quick_sort(arr):
-    # Phisanuwat ทำการเติม Code ของ Quick Sort
-    pass
+    def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[len(arr)//2]
+    left  = [x for x in arr if x < pivot]
+    mid   = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    return quick_sort(left) + mid + quick_sort(right)
 
-
-# ----------------------------
-# Main Program
-# ----------------------------
 def main():
     arr, algo = get_input()
 
@@ -39,7 +36,8 @@ def main():
         print("Sorted (Bubble Sort):", result)
 
     elif algo == "quick":
-        print("Quick sort not implemented yet ( teammate will add ).")
+        result = quick_sort(arr)
+        print("Sorted (Quick Sort):", result)
 
     else:
         print("Invalid algorithm choice!")
